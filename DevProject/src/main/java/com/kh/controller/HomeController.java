@@ -1,13 +1,30 @@
 package com.kh.controller;
 
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+import ch.qos.logback.core.joran.spi.HttpUtil.RequestMethod;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Controller // 문자열이든 뭐든 결과값이 무조건 화면으로 가야된다. 
 public class HomeController {
-	@GetMapping(value="/")
-	public String home() {
-		return "home";   //WEB-INF/views/home.jsp
+	
+	@GetMapping(value = "/formHome")
+	public String formHome() {
+		
+		log.info("GET 방식 formHome");
+		
+		return "formHome";
 	}
+
 }
