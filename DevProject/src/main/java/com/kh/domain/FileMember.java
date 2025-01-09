@@ -1,6 +1,9 @@
 package com.kh.domain;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,12 +17,9 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Data
-public class Board {
-	private int boardNo;
-	private String title;
-	private String content;
-	private String writer;
-	private Date regDate;
-	
+public class FileMember {
+	private String userId;
+	private String password;
+	private List <MultipartFile> picture;
 	
 }

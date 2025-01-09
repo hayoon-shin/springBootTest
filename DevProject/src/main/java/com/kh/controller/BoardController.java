@@ -16,68 +16,49 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.kh.domain.Board;
 
-import ch.qos.logback.core.joran.spi.HttpUtil.RequestMethod;
 import jakarta.websocket.server.PathParam;
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Controller // 문자열이든 뭐든 결과값이 무조건 화면으로 가야된다. 
+@Controller
 @RequestMapping("/board")
 public class BoardController {
-	
-	@GetMapping(value = "/get", params="register")
-	public String registerForm() {
-		log.info("params 파라미터 GET 방식 등록 폼");
+
+	@PutMapping(value = "/{boardno}")
+	public ResponseEntity<String> modify(@PathVariable("boardno") int boardno, @RequestBody Board board, Model model) {
+		log.info("put boardno = " + boardno);
+		log.info("put board = " + board.toString());
+
+		ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		return entity;
+	}
+
+	@PostMapping(value = "/{boardno}")
+	public ResponseEntity<String> modifyPost(@PathVariable("boardno") int boardno, @RequestBody Board board) {
+		log.info("post boardno = " + boardno);
+		log.info("post board = " + board.toString());
+
+		ResponseEntity<String> entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		return entity;
+	}
+
+	@GetMapping(value = "/{boardno}", produces = "application/json")
+	public ResponseEntity<Board> boardGetOne(@PathVariable("boardno") int boardno) {
+		log.info("post boardno = " + boardno);
+		Board board = new Board();
+
+		board.setTitle("제목");
+		board.setContent("내용입니다.");
+		board.setWriter("홍길동");
+		board.setRegDate(new Date());
 		
-		return "board/register";
+		ResponseEntity<Board> entity = new ResponseEntity<Board>(board, HttpStatus.OK);
+		return entity;
 	}
-	@PostMapping(value = "/post", params="register")
-	public String register() {
-		log.info("params 파라미터 POST 방식 등록 폼");
-		
-		return "board/list";
-	}
-	@GetMapping(value = "/get", params="modify")
-	public String modifyForm() {
-		log.info("params 파라미터 Get 방식 수정 폼");
-			
-		return "board/modify";
-	}
-		 
-	@PostMapping(value = "/post", params="modify")
-	public String modify() {
-		log.info("params 파라미터 POST 방식 수정");
-					
-		return "board/list";
-	}	
-		
-	@GetMapping(value = "/get", params="remove")
-	public String removeForm() {
-		log.info("params 파라미터 Get 방식 삭제 폼");
-					
-		return "board/remove";
-	}
-	@PostMapping(value = "/post", params="remove")
-	public String remove() {
-		log.info("params 파라미터 POST 방식 삭제");
-					
-		return "board/list";
-	}	
-				
-	@GetMapping(value = "/get", params="list")
-	public String list() {
-		log.info("params 파라미터 Get 방식 목록");
-					
-		return "board/list";
-	}
-	
-	@GetMapping(value= "/get", params="read")
-	public String read() {
-		log.info("params 파라미터 Get 방식 읽기");
-		
-		return "board/read";
-	}
-	
+
 }
