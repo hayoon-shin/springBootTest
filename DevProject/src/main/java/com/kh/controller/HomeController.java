@@ -48,4 +48,13 @@ public class HomeController {
 		return "registerAjaxFileUpForm"; // 뷰 파일명
 	}
 
+	@RequestMapping(value = "/", method = org.springframework.web.bind.annotation.RequestMethod.GET)
+	public String home(Locale locale, Model model) {
+		log.info("환영합니다. 클라이언트 지역은 " + locale + "이다.");
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		String formattedDate = dateFormat.format(date);
+		model.addAttribute("serverTime", formattedDate);
+		return "home"; // 뷰 파일명
+	}
 }

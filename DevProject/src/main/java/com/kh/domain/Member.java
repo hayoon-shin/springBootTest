@@ -2,7 +2,12 @@ package com.kh.domain;
 
 import java.util.Date;
 import java.util.List;
+
+import org.springframework.boot.convert.DataSizeUnit;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,13 +21,16 @@ import lombok.ToString;
 
 @Data
 public class Member {
-	@NotBlank(message = "공백이나 빈칸일 수 없습니다 ")
+	@NotBlank
 	private String userId;
 	private String password;
-	private List<String> hobbyList;
-	private int coin;
-	private String email;
+	// 여러 개의 입력값 검증 규칙을 지정할 수 있다.
+	@NotBlank
+	@Size(max = 3)
 	private String userName;
-	private Date dateofBirth;
+	private String email;
+	private String gender;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dateOfBirth;
 	
 }
