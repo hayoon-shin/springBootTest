@@ -40,7 +40,7 @@
 		</table>
 	</form:form>
 	<div>
-		<button type="button" id="btnRegister">등록</button>
+		<button type="submit" id="btnRegister">등록</button>
 	</div>
 </body>
 </html>
