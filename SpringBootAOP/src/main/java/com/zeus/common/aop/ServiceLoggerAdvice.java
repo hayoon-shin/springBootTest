@@ -39,9 +39,18 @@ public class ServiceLoggerAdvice {
 	//조인포인트(핵심코드) 전, 후 작동
 	@Around("execution(* com.zeus.service.BoardService*.*(..))")
 	public Object timeLog(ProceedingJoinPoint pjp) throws Throwable {
+		//앞에서 advice 실행한다.
 		long startTime = System.currentTimeMillis();
-		Object obj = pjp.proceed();
+		//조인포인트(핵심코드) 실행한다.
+		Object obj = null;
+		try {
+			obj = pjp.proceed();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		//뒤에서 advice 실행한다.
 		long stopTime = System.currentTimeMillis();
+		//부산물
 		log.info(pjp.getSignature().getName()+":"+(stopTime - startTime));
 		log.info("-----------------------------------------------------");
 		return null;
