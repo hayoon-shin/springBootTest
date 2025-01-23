@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reverse Geocoding</title>
+</head>
+<body>
+    <h1>Reverse Geocoding</h1>
+    <form action="/reverse-geocode" method="get">
+        <label for="lat">Latitude:</label>
+        <input type="text" id="lat" name="lat" required>
+        <label for="lng">Longitude:</label>
+        <input type="text" id="lng" name="lng" required>
+        <button type="submit">Get Address</button>
+    </form>
+</body>
+</html>
