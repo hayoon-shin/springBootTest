@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#img_zoo {
+	position: relative;
+	width: 1100px;
+	height: 400px;
+	left: 400px;
+}
+
+.fa-caret-right {
+	position: absolute;
+	cursor: pointer;
+	z-index: 1;
+	padding-left: 200px;
+	right: 420px;
+	height: 400px;
+	color: rgba(0, 0, 0, 0);
+}
+
+.fa-caret-left {
+	position: absolute;
+	cursor: pointer;
+	z-index: 1;
+	padding-right: 200px;
+	left: 400px;
+	height: 400px;
+	color: rgba(0, 0, 0, 0);
+}
+
+.menu {
+	display: flex;
+	justify-content: center;
+	align-content: center
+}
+
+.register {
+	position: absolute;
+	right: 370px;
+}

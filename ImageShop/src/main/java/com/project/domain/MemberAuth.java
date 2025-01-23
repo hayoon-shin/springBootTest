@@ -6,4 +6,5 @@ import lombok.Data;
 public class MemberAuth {
 	private int userNo;
 	private String auth;
+
 }

@@ -10,6 +10,7 @@ import com.project.mapper.CodeDetailMapper;
 
 @Service
 public class CodeDetailServiceImpl implements CodeDetailService {
+
 	@Autowired
 	private CodeDetailMapper mapper;
 
@@ -22,16 +23,24 @@ public class CodeDetailServiceImpl implements CodeDetailService {
 		mapper.create(codeDetail);
 	}
 
-	// 목록 페이지
 	@Override
 	public List<CodeDetail> list() throws Exception {
 		return mapper.list();
 	}
 
-	// 상세 페이지(수정 페이지)
+	// 상세 페이지
 	@Override
 	public CodeDetail read(CodeDetail codeDetail) throws Exception {
 		return mapper.read(codeDetail);
 	}
 
+	@Override
+	public void modify(CodeDetail codeDetail) throws Exception {
+		mapper.update(codeDetail);
+	}
+
+	@Override
+	public void remove(CodeDetail codeDetail) throws Exception {
+		mapper.delete(codeDetail);
+	}
 }

@@ -32,7 +32,5 @@
             <a href="#"><i class="fa-solid fa-circle-dot"></i></a>
             <a href="#"><i class="fa-solid fa-circle-dot"></i></a>
         </div>
-    </div>
-    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

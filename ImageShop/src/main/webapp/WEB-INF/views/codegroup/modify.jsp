@@ -1,27 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="/css/codegroup.css">
+<script type="text/javascript" src="/js/test.js"></script>
 <title>Image Shop</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/common/header.jsp" />
-	<jsp:include page="/WEB-INF/views/common/menu.jsp" />
+	<jsp:include page="../common/header.jsp" />
+	<jsp:include page="../common/menu.jsp" />
 	<main align="center">
 		<h2>
-			<spring:message code="codegroup.header.register" />
+			<spring:message code="codegroup.header.modify" />
 		</h2>
-
-		<form:form modelAttribute="codeGroup" action="/codegroup/modify" method="post">
-			<table class="input_table">
+		<form:form modelAttribute="codeGroup" action="/codegroup/modify" mothod="post">
+			<table align="center">
 				<tr>
 					<td><spring:message code="codegroup.groupCode" /></td>
-					<td><form:input path="groupCode" /></td>
+					<td><form:input path="groupCode" readonly="true"/></td>
 					<td><font color="red"><form:errors path="groupCode" /></font></td>
 				</tr>
 				<tr>
@@ -31,7 +30,6 @@
 				</tr>
 			</table>
 		</form:form>
-
 		<div>
 			<button type="button" id="btnModify">
 				<spring:message code="action.modify" />
@@ -41,9 +39,8 @@
 			</button>
 		</div>
 
-
 	</main>
-	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
+	<jsp:include page="../common/footer.jsp" />
 	<script>
 		$(document).ready(function() {
 			var formObj = $("#codeGroup");

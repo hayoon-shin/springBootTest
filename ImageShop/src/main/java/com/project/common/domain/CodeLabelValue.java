@@ -1,10 +1,10 @@
 package com.project.common.domain;
 
 import lombok.Data;
-// 그룹코드에서 사용되고 있는 그룹코드(value)와 그룹네임(label)을 관리하는 도메인
-@Data // get, set, toString, equal, hashcode, requireArgument constructor
-public class CodeLabelValue {
 
+//code_group 테이블에서 사용되어 있다 표시된 (use_yn = y) 인 그룹 이름을 관리하기 위한 도메인
+@Data
+public class CodeLabelValue {
 	private final String value;
 	private final String label;
 }
