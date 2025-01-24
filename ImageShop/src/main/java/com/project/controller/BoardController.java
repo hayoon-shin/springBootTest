@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.common.security.domain.CustomUser;
 import com.project.domain.Board;
@@ -40,5 +41,13 @@ public class BoardController {
 	board.setWriter(member.getUserId());
 	model.addAttribute(board);
 	}
-	
+	// 게시글 등록 처리
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@PreAuthorize("hasRole('ROLE_MEMBER')")
+	public String register(Board board, RedirectAttributes rttr) throws Exception {
+		service.register(board);
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		return "redirect:/board/list";
+		}
+		
 }

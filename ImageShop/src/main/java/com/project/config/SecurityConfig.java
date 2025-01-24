@@ -22,12 +22,13 @@ import com.project.common.security.CustomAccessDeniedHandler;
 import com.project.common.security.CustomLoginSuccessHandler;
 import com.project.common.security.CustomNoOpPasswordEncoder;
 import com.project.common.security.CustomUserDetailsService;
+import com.project.service.BoardService;
+import com.project.service.BoardServiceImpl;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Configuration
-
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig {
@@ -86,7 +87,7 @@ public class SecurityConfig {
 	public UserDetailsService createUserDetailsService() {
 		return new CustomUserDetailsService();
 	}
-
+	
 	//사용자가 정의한 비밀번호 암호화 처리기를 빈으로 등록한다.
 	@Bean
 	public PasswordEncoder createPasswordEncoder() {

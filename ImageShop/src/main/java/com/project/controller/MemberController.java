@@ -38,7 +38,15 @@ public class MemberController {
 		
 		return "user/register";
 	}
-
+	
+	public void checkPasswordEncoder() {
+	    if (passwordEncoder == null) {
+	        System.out.println("PasswordEncoder 빈 주입 실패!");
+	    } else {
+	        System.out.println("PasswordEncoder 빈이 성공적으로 주입되었습니다.");
+	    }
+	}
+	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(@Validated Member member, BindingResult result, Model model, RedirectAttributes rttr)
 			throws Exception {
@@ -54,6 +62,7 @@ public class MemberController {
 		// 8643aa23-77df-4c49-b9b2-321e23516a9c => BCryptPasswordEncoder 방식
 		String inputPassword = member.getUserPw();
 		member.setUserPw(passwordEncoder.encode(inputPassword));
+		
 		service.register(member);
 		rttr.addFlashAttribute("userName", member.getUserName());
 		return "redirect:/user/registerSuccess";
@@ -133,5 +142,7 @@ public class MemberController {
 		// 회원 테이블에 데이터가 존재하면 최초 관리자를 생성할 수 없으므로 실패 페이지로 이동한다.
 		return "user/setupFailure";
 	}
+	
+	
 
 }

@@ -17,7 +17,7 @@
                     <a href="/join/join/view/login/login.jsp">로그인</a>
                     <a href="/join/join/view/login/mypage.jsp">마이페이지</a>
                 </div></li>
-            <li><a href="/codegroup/register.jsp" class="dropbtn">상품등록</a>
+            <li><a href="/WEB-INF/views/codegroup/register.jsp" class="dropbtn">상품등록</a>
                 <div class="dropdown-content">
                     <a href="/join/join/view/notice/list.jsp">공지사항</a>
                     <a href="/join/join/view/fileupload/fileuploadList.jsp">자료실</a>
